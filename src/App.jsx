@@ -7,6 +7,10 @@ import img4 from './image/nike 4.png'
 import img5 from './image/nike 5.webp'
 import img6 from './image/nike 6.webp'
 
+
+import toast, { Toaster } from 'react-hot-toast';
+
+
 const products = [
   { id: 1, name: "NIKE 2024", price: 200, image: img1 },
   { id: 2, name: "NIKE", price: 300, image: img2 },
@@ -17,6 +21,11 @@ const products = [
   { id: 7, name: "NIKE AKILL", price: 190, image: img3 },
   { id: 8, name: "NIKE ZOOM", price: 420, image: img5 },
 ];
+
+
+const notify = () => toast.success("product add Succesfully!");
+
+
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -106,7 +115,10 @@ function App() {
             <img src={product.image} alt={product.name} className="product-image" />
             <h2 className="product-name">{product.name}</h2>
             <p className="product-price">${product.price}</p>
-            <button className="add-to-cart-btn" onClick={() => addToCart(product)}>ADD TO CART 🛒</button>
+            <button className="add-to-cart-btn" onClick={() => {notify(); addToCart(product);}}>
+            ADD TO CART 🛒
+            </button>
+            <Toaster />
           </div>
         ))}
       </div>
